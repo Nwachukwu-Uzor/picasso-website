@@ -1,5 +1,5 @@
 import confetti from "canvas-confetti";
-import { RefObject, useEffect } from "react";
+import { type RefObject, useEffect } from "react";
 
 const COLORS = ["#FF007A", "#FFC107", "#7000FF", "#bb0058", "#ffffff"];
 
