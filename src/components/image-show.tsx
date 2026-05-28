@@ -89,21 +89,45 @@ export const ImageShow = () => {
         <div className="flex flex-col items-center gap-4">
           {/* carousel + dot line */}
           <div className="relative flex items-center justify-center w-full">
-            <div
-              className="overflow-hidden h-[70vh] w-[52.5vh] rounded-md"
-              ref={emblaRef}
-              onMouseEnter={pause}
-              onMouseLeave={resume}
-            >
-              <div className="flex h-full">
-                {gloryImages.map((img) => (
-                  <div key={img.id} className="shrink-0 w-[52.5vh] h-full">
-                    <img
-                      src={img.path}
-                      className="h-full w-full border-10 border-white rounded-md object-contain bg-white cursor-pointer"
-                    />
-                  </div>
-                ))}
+            <div className="relative">
+              {[
+                { cls: "-top-3 -left-3", delay: 0,   size: "text-xl",  color: "text-primary" },
+                { cls: "-top-4 left-8",  delay: 0.7, size: "text-sm",  color: "text-secondary" },
+                { cls: "-top-3 -right-3",delay: 1.4, size: "text-xl",  color: "text-primary" },
+                { cls: "top-8 -right-4", delay: 0.4, size: "text-sm",  color: "text-primary-accent" },
+                { cls: "-bottom-3 -right-3", delay: 1.1, size: "text-xl", color: "text-secondary" },
+                { cls: "-bottom-3 -left-3",  delay: 0.9, size: "text-xl", color: "text-primary" },
+                { cls: "bottom-8 -left-4",   delay: 1.7, size: "text-sm", color: "text-primary-accent" },
+                { cls: "top-1/2 -left-4",    delay: 0.3, size: "text-sm", color: "text-secondary" },
+                { cls: "top-1/2 -right-4",   delay: 1.9, size: "text-sm", color: "text-primary" },
+              ].map(({ cls, delay, size, color }, i) => (
+                <motion.div
+                  key={i}
+                  className={`absolute pointer-events-none ${cls}`}
+                  animate={{ scale: [0, 1.2, 0], opacity: [0, 1, 0], rotate: [0, 20, 0] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay }}
+                >
+                  <HiOutlineSparkles className={`${size} ${color}`} />
+                </motion.div>
+              ))}
+
+              <div
+                className="overflow-hidden h-[70vh] w-[52.5vh] rounded-md"
+                ref={emblaRef}
+                onMouseEnter={pause}
+                onMouseLeave={resume}
+              >
+                <div className="flex h-full">
+                  {gloryImages.map((img) => (
+                    <div key={img.id} className="relative overflow-hidden shrink-0 w-[52.5vh] h-full">
+                      <img
+                        src={img.path}
+                        className="h-full w-full border-10 border-white rounded-md object-contain bg-white cursor-pointer"
+                      />
+                      <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent animate-glow-sweep pointer-events-none" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
