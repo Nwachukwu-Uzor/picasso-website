@@ -88,9 +88,7 @@ export const ImageShow = () => {
 
         <div className="flex flex-col items-center gap-4">
           {/* carousel + dot line */}
-          <div className="flex items-center gap-3.5 justify-center">
-            {dotLeft && <DotLine />}
-
+          <div className="relative flex items-center justify-center w-full">
             <div
               className="overflow-hidden h-[70vh] w-[52.5vh] rounded-md"
               ref={emblaRef}
@@ -102,14 +100,16 @@ export const ImageShow = () => {
                   <div key={img.id} className="shrink-0 w-[52.5vh] h-full">
                     <img
                       src={img.path}
-                      className="h-full w-full border-10 border-white rounded-md object-cover cursor-pointer"
+                      className="h-full w-full border-10 border-white rounded-md object-contain bg-white cursor-pointer"
                     />
                   </div>
                 ))}
               </div>
             </div>
 
-            {!dotLeft && <DotLine />}
+            <div className={`absolute top-0 ${dotLeft ? "right-[calc(50%+26.25vh+1rem)]" : "left-[calc(50%+26.25vh+1rem)]"}`}>
+              <DotLine />
+            </div>
           </div>
 
           {/* controls below */}
