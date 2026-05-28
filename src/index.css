@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #bb0058;
+  --color-primary-accent: #ff007a;
+  --color-secondary: #ffc107;
+  --color-tertiary: #7000ff;
+  --color-neutral: #121212;
+  --color-brown: #4D4635;
+
+  --animate-glow-sweep: glow-sweep 2.5s ease-in-out infinite;
+}
+
+@keyframes glow-sweep {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+body,
+html {
+  background-color: #fbf9f5;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
